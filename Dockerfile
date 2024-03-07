@@ -1,4 +1,10 @@
-FROM python:3.9
+FROM python:3.12
+
+RUN apt-get update && apt-get install -y curl
+
+RUN curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
+
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 WORKDIR /MovieRecommendation
 
