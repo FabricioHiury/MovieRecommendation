@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/MovieRecommendation
+    ports:
+      - "8000:8000"
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+    volumes:
+      - .:/MovieRecommendation
+    ports:
+      - "8888:8888"
